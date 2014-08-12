@@ -6,7 +6,7 @@ class Book
     @id = attributes['id'].to_i
   end
 
-  def Book.authors
+  def authors
     @authors =[]
   end
 
@@ -39,6 +39,8 @@ class Book
     DB.exec("DELETE FROM book WHERE id = #{self.id};")
   end
 
-
+  def add_author(author_id)
+    DB.exec("INSERT INTO book_author (author_id, book_id) VALUES (#{author_id}, #{self.id});")
+  end
 end
 

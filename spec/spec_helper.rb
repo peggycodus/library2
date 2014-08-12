@@ -9,6 +9,8 @@ DB = PG.connect({:dbname => 'library2'})
 RSpec.configure do |config|
   config.after(:each) do
     DB.exec("DELETE FROM book *;")
+    DB.exec("DELETE FROM author *;")
+    DB.exec("DELETE FROM book_author *;")
   end
 end
 

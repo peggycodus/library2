@@ -11,5 +11,17 @@ describe 'Author' do
     expect(Author.all).to eq []
   end
 
+  it 'saves an author to the database' do
+    new_author = Author.new({'name' => 'Virginia Woolf', 'id' => 1})
+    new_author.save
+    expect(Author.all).to eq [new_author]
+  end
 
+  it 'is the same author if it has the same name' do
+    new_author = Author.new({'name' => 'Virginia Woolf', 'id' => 1})
+    new_author.save
+    new_author_two = Author.new({'name' => 'Virginia Woolf', 'id' => 1})
+    new_author_two.save
+    expect(new_author).to eq new_author_two
+  end
 end

@@ -44,12 +44,12 @@ describe 'Book' do
     expect(Book.authors).to eq []
   end
 
-  # it 'adds an author to a book' do
-  #   test_book = Book.new({'title' => 'Mrs. Dalloway', 'id' => 3})
-  #   test_book.save
-  #   new_author = Author.new({'name' => 'Virginia Woolf', 'id' => 1})
-  #   test_book.add_author(new_author.id)
-  #   expect(test_book.author).to eq new_author
-  # end
+  it 'adds an author to a book' do
+    test_book = Book.new({'title' => 'Mrs. Dalloway', 'id' => 3})
+    test_book.save
+    new_author = Author.new({'name' => 'Virginia Woolf', 'id' => 1})
+    test_book.add_author(new_author.id)
+    expect(test_book.authors).to eq new_author
+  end
 end
 
