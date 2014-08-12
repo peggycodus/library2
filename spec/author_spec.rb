@@ -10,4 +10,6 @@ describe 'Author' do
     new_author = Author.new({'name' => 'Virginia Woolf', 'id' => 1})
     expect(Author.all).to eq []
   end
+
+
 end

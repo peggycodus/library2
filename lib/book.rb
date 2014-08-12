@@ -1,10 +1,13 @@
 class Book
-
-  attr_reader :title, :all_books, :id
+  attr_reader :title, :all_books, :id, :authors
 
   def initialize(attributes)
     @title = attributes['title']
     @id = attributes['id'].to_i
+  end
+
+  def Book.authors
+    @authors =[]
   end
 
   def Book.all
@@ -35,5 +38,7 @@ class Book
   def delete
     DB.exec("DELETE FROM book WHERE id = #{self.id};")
   end
+
+
 end
 

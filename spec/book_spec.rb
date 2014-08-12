@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'Book' do
-
   it 'creates an instance of a book' do
     test_book = Book.new({'title' => 'Mrs. Dalloway', 'id' => 3})
     expect(test_book).to be_an_instance_of Book
@@ -39,5 +38,18 @@ describe 'Book' do
     test_book.delete
     expect(Book.all).to eq []
   end
+
+  it 'starts with an empty authors array' do
+    test_book = Book.new({'title' => 'Mrs. Dalloway', 'id' => 3})
+    expect(Book.authors).to eq []
+  end
+
+  # it 'adds an author to a book' do
+  #   test_book = Book.new({'title' => 'Mrs. Dalloway', 'id' => 3})
+  #   test_book.save
+  #   new_author = Author.new({'name' => 'Virginia Woolf', 'id' => 1})
+  #   test_book.add_author(new_author.id)
+  #   expect(test_book.author).to eq new_author
+  # end
 end
 
