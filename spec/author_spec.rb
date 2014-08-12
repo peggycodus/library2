@@ -31,4 +31,11 @@ describe 'Author' do
     new_author.edit 'Frank Miller'
     expect(new_author.name).to eq 'Frank Miller'
   end
+
+  it 'can delete an author' do
+    new_author = Author.new({'name' => 'Virginia Woolf', 'id' => 1})
+    new_author.save
+    new_author.delete
+    expect(Author.all).to eq []
+  end
 end

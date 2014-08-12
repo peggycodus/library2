@@ -34,4 +34,8 @@ class Author
     @name = edited_name
     DB.exec("UPDATE author SET name = '#{@name}';")
   end
+
+  def delete
+    DB.exec("DELETE FROM author WHERE id = #{self.id}")
+  end
 end
