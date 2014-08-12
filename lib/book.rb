@@ -1,6 +1,6 @@
 class Book
 
-  attr_reader :title, :all_books
+  attr_reader :title, :all_books, :id
 
   def initialize(attributes)
     @title = attributes['title']
@@ -30,6 +30,10 @@ class Book
   def edit(edited_title)
     @title = edited_title
     DB.exec("UPDATE book SET title = '#{@title}';")
+  end
+
+  def delete
+    DB.exec("DELETE FROM book WHERE id = #{self.id};")
   end
 end
 

@@ -32,5 +32,12 @@ describe 'Book' do
     test_book.edit 'To The Lighthouse'
     expect(test_book.title).to eq 'To The Lighthouse'
   end
+
+  it 'can delete a book' do
+    test_book = Book.new({'title' => 'Mrs. Dalloway', 'id' => 3})
+    test_book.save
+    test_book.delete
+    expect(Book.all).to eq []
+  end
 end
 
