@@ -24,4 +24,11 @@ describe 'Author' do
     new_author_two.save
     expect(new_author).to eq new_author_two
   end
+
+  it 'can edit author name' do
+    new_author = Author.new({'name' => 'Virginia Woolf', 'id' => 1})
+    new_author.save
+    new_author.edit 'Frank Miller'
+    expect(new_author.name).to eq 'Frank Miller'
+  end
 end

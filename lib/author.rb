@@ -29,4 +29,9 @@ class Author
   def ==(another_author)
     self.name == another_author.name
   end
+
+  def edit(edited_name)
+    @name = edited_name
+    DB.exec("UPDATE author SET name = '#{@name}';")
+  end
 end
