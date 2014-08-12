@@ -1,5 +1,6 @@
 require 'rspec'
 require './lib/book'
+require './lib/author'
 require 'pg'
 require 'pry'
 
