@@ -25,5 +25,12 @@ describe 'Book' do
     test_book1.save
     expect(test_book).to eq test_book1
   end
+
+  it 'can edit the name of the book' do
+    test_book = Book.new({'title' => 'Mrs. Dalloway', 'id' => 3})
+    test_book.save
+    test_book.edit 'To The Lighthouse'
+    expect(test_book.title).to eq 'To The Lighthouse'
+  end
 end
 
