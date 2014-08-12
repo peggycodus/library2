@@ -41,15 +41,23 @@ describe 'Book' do
 
   it 'starts with an empty authors array' do
     test_book = Book.new({'title' => 'Mrs. Dalloway', 'id' => 3})
-    expect(Book.authors).to eq []
+    expect(test_book.authors).to eq []
   end
 
-  it 'adds an author to a book' do
+  it 'joins an author to a book' do
     test_book = Book.new({'title' => 'Mrs. Dalloway', 'id' => 3})
     test_book.save
     new_author = Author.new({'name' => 'Virginia Woolf', 'id' => 1})
+    new_author.save
     test_book.add_author(new_author.id)
-    expect(test_book.authors).to eq new_author
+    expect(test_book.authors).to eq [new_author]
+  end
+
+  it 'adds the author to the authors array' do
+    new_author = Author.new({'name' => 'Virginia Woolf', 'id' => 1})
+    new_author.save
+    test_book = Book.new({'title' => 'Mrs. Dalloway', 'id' => 3})
+    test_book.save
+    expect(test_book.authors).to eq [new_author]
   end
 end
-

@@ -7,7 +7,17 @@ class Book
   end
 
   def authors
-    @authors =[]
+    authors =[]
+    results = DB.exec("SELECT author.* FROM book
+                        JOIN book_author ON (book.id = book_author.book_id)
+                        JOIN author ON (book_author.author_id = author.id)
+                        WHERE book.id = #{self.id}")
+    results.each do |result|
+      id = result['id']
+      name = result['name']
+      authors << Author.new({'name' => name, 'id' => id})
+    end
+    authors
   end
 
   def Book.all
@@ -43,4 +53,3 @@ class Book
     DB.exec("INSERT INTO book_author (author_id, book_id) VALUES (#{author_id}, #{self.id});")
   end
 end
-

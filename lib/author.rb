@@ -14,7 +14,7 @@ class Author
     all_authors = []
     results = DB.exec("SELECT * FROM author;")
     results.each do |result|
-      id = result['id']
+      id = result['id'].to_i
       name = result['name']
       all_authors << Author.new({'name' => name, 'id' => id})
     end
