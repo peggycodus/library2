@@ -58,6 +58,7 @@ describe 'Book' do
     new_author.save
     test_book = Book.new({'title' => 'Mrs. Dalloway', 'id' => 3})
     test_book.save
+    test_book.add_author(new_author.id)
     expect(test_book.authors).to eq [new_author]
   end
 end
